@@ -22,16 +22,8 @@ end
   end
   
   def best_tipper
-    best_tipper = nil
-    best_tip = 0
-    
-    self.meals.each do |meal|
-      if meal.tip > best_tip
-        best_tip = meal.tip
-        best_tipper = meal.customer
-      end
-    end
-    best_tipper
+    best_meal = meals.max {|m1, m2| m1.tip <=> m2.tip}
+    best_meal.customer
   end
 
 end
